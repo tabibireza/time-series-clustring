@@ -1,0 +1,6 @@
+"0","pattern <- c(rep('Normal',n),"
+"0","             rep('Cyclic',n),"
+"0","             rep('Increasing',n),"
+"0","             rep('Decreasing',n),"
+"0","             rep('Upward',n),"
+"0","             rep('downward',n))"

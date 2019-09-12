@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1568271874165.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2500505110",
+    "id" : "5A0239FF",
+    "lastKnownWriteTime" : 1568277008,
+    "last_content_update" : 1568277008937,
+    "path" : "E:/towork/study/r-studio/projects/time-series clustring/time-series clustring note.Rmd",
+    "project_path" : "time-series clustring note.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "114,0",
+        "scrollLine" : "105",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

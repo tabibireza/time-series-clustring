@@ -1,0 +1,6 @@
+"0","hc <- hclust(distance, method='average')"
+"0","plot(hc, "
+"0","     labels = pattern,"
+"0","     cex=0.7,"
+"0","     hang=-1,"
+"0","     col='blue')"

@@ -1,0 +1,2 @@
+"0","library(dtw)"
+"0","distance <- dist(d, method = ""DTW"")"

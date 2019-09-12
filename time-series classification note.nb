@@ -1,0 +1,12 @@
+---
+title: "time series classification"
+output: html_notebook
+---
+
+title: " "
+output: html_notebook
+---
+
+data preparation 
+classification with decision trees 
+classification performance 

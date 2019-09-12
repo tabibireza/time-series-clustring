@@ -1,0 +1,118 @@
+---
+title: "Time series clustring and classification"
+output: html_notebook
+---
+
+data discription
+https://kdd.ics.uci.edu/databases/synthetic_control/synthetic_control.data.html
+
+measuring somthing(metric) in different times (60) 
+
+
+task and problem is to recognize sort of series 
+https://kdd.ics.uci.edu/databases/synthetic_control/synthetic_control.clustering.html
+how many trend can be identified in our observations 
+
+
+data
+https://kdd.ics.uci.edu/databases/synthetic_control/synthetic_control.data
+
+data read
+```{r}
+data <- read.table(file.choose(), header=F, sep = "")
+str(data)
+```
+
+plot
+```{r}
+plot(data[,60], type = 'l')
+
+```
+
+for plotting a sample of each pattern with systematic sampling 
+```{r}
+j <- c(5,105, 205, 305,405, 505)
+sample <- t(data[j,])
+plot.ts(sample,
+        main="Time -series Plot",
+        col='blue',
+        type= 'b')
+
+```
+
+data prepration 
+systematic random sample of 10 which means 60 bservation out of 600 observation has been choosed for 60 varible(times)
+
+```{r}
+n <- 10 
+s <- sample(1:100, n)
+i <- c(s, 100+s, 200+s, 300+s, 400+s, 500+s)
+d <- data[i, ]
+str(d)
+```
+
+pattern or nameing trends 
+```{r}
+pattern <- c(rep('Normal',n),
+             rep('Cyclic',n),
+             rep('Increasing',n),
+             rep('Decreasing',n),
+             rep('Upward',n),
+             rep('downward',n))
+```
+
+calculation of distances by Derivative Dynamic Time Warping
+```{r}
+library(dtw)
+distance <- dist(d, method = "DTW")
+```
+
+Hierarchical clustring 
+```{r}
+hc <- hclust(distance, method='average')
+plot(hc, 
+     labels = pattern,
+     cex=0.7,
+     hang=-1,
+     col='blue')
+rect.hclust(hc, k=4)
+
+```
+
+for identematictifiying number of clusters 
+
+
+Classification 
+Data preparation 
+instead of systematic random sampling all data has been considered 
+
+```{r}
+pattern100 <- c(rep('Normal',100),
+             rep('Cyclic',100),
+             rep('Increasing',100),
+             rep('Decreasing',100),
+             rep('Upward',100),
+             rep('downward',100))
+newdata <- data.frame (data, pattern100)
+str(newdata)
+```
+
+classfication with decision tree
+```{r}
+library(party)
+tree <- ctree(pattern100~.,newdata)
+tree
+```
+as it is shown there is 25 terminal nodes
+
+classification performance 
+```{r}
+tab <- table(predicted = predict(tree,newdata), actual=newdata$pattern100)
+tab
+sum(diag(tab))/sum(tab)
+```
+it is shown that this classification is above 95% accurate 
+
+
+
+

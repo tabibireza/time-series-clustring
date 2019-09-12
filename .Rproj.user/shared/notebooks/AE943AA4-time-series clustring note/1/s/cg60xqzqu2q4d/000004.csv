@@ -1,0 +1,7 @@
+"0","j <- c(5,105, 205, 305,405, 505)"
+"0","sample <- t(data[j,])"
+"0","plot.ts(sample,"
+"0","        main=""Time -series Plot"","
+"0","        col='blue',"
+"0","        type= 'b')"
+"0",""
